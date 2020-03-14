@@ -30,6 +30,11 @@
       window.doInactivityMap();
       adForm.reset();
     });
+    adForm.addEventListener('reset', function (evt) {
+      evt.preventDefault();
+      window.doInactivityMap();
+      adForm.reset();
+    });
   };
 
 })();

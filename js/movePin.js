@@ -9,9 +9,6 @@
 
     mapPin.addEventListener('mousedown', function (evt) {
       evt.preventDefault();
-      window.createButtons();
-      window.createCards();
-      window.listeningTriggerCards();
 
       var startCoords = {
         x: evt.clientX,

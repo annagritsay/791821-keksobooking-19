@@ -1,9 +1,10 @@
 'use strict';
 
+// Загрузка данных и вызов слушателей различных событий на странице
 (function () {
   window.load();
   window.movePin();
-  window.sendFormData();
   window.filtersPins();
   window.validatesFormField();
+  window.sendFormData();
 })();

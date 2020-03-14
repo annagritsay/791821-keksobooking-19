@@ -1,7 +1,8 @@
-// Управляет карточками объявлений и пинами
 'use strict';
+
 (function () {
-  // Делает поля активными
+  // Активное состояние карты
+
   window.doActivityMap = function () {
     var adForm = document.querySelector('.ad-form');
     var mapFilters = document.querySelector('.map__filters');
@@ -17,5 +18,8 @@
       val.removeAttribute('disabled', true);
     });
     addressId.setAttribute('value', '570, 375');
+    window.createButtons();
+    window.createCards();
+    window.listeningTriggerCards();
   };
 })();
