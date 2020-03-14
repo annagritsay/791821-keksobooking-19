@@ -12,8 +12,7 @@
       window.createButtons();
       window.createCards();
       window.listeningTriggerCards();
-      window.filtersPins();
-      window.validatesFormField();
+
       var startCoords = {
         x: evt.clientX,
         y: evt.clientY

@@ -13,7 +13,6 @@
       var housingRooms = document.querySelector('#housing-rooms');
       var housingGuests = document.querySelector('#housing-guests');
 
-
       if (housingTypeSelect.value === 'any') {
         var newArray1 = window.copyArrayElement;
       } else {
@@ -139,6 +138,8 @@
         }
       });
       window.arrayElement = finishArray;
+      window.createButtons();
+      window.createCards();
     });
   };
 })();
