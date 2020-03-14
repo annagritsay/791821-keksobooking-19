@@ -1,13 +1,14 @@
-// Создание карточки объявлений
 'use strict';
+
 (function () {
-  var templateCard = document.querySelector('#card');
-  var mapCard = templateCard.content.querySelector('.popup');
   var fragmentCard = document.createDocumentFragment();
 
   /*  Функция создания одной карточки  */
   var createCard = function (indexCard) {
+    var templateCard = document.querySelector('#card');
+    var mapCard = templateCard.content.querySelector('.popup');
     var elementCard = mapCard.cloneNode(true);
+
     elementCard.querySelector('.popup__avatar').src = window.arrayElement[indexCard].author.avatar;
     elementCard.querySelector('.popup__title').textContent = window.arrayElement[indexCard].offer.title;
     elementCard.querySelector('.popup__text--address').textContent = window.arrayElement[indexCard].offer.address;
@@ -56,14 +57,15 @@
     fragmentCard.appendChild(elementCard);
   };
 
-  var containerCard = document.querySelector('.map');
-  var filtersContainer = document.querySelector('.map__filters-container');
-
   /*  Функция создания всех карточек  */
   window.createCards = function () {
+    var containerCard = document.querySelector('.map');
+    var filtersContainer = document.querySelector('.map__filters-container');
+
     for (var indexCard = 0; indexCard < window.arrayElement.length && indexCard < 5; indexCard++) {
       createCard(indexCard);
     }
     containerCard.insertBefore(fragmentCard, filtersContainer);
   };
+
 })();
