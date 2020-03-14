@@ -25,22 +25,22 @@
           y: moveEvt.clientY
         };
         var pointTop = mapPin.offsetTop - shift.y;
-        if (pointTop < 130) {
-          pointTop = 130;
+        if (pointTop < 118) {
+          pointTop = 118;
         }
-        if (pointTop > 630) {
-          pointTop = 630;
+        if (pointTop > 618) {
+          pointTop = 618;
         }
         // Вычисляет ширину карты (для правой границы), но в таком случае метка тупит на границе, дергается, решить эту проблему можно, но подольше по времени
         // var card = document.querySelector('.map__pins');
         // var widthMap = card.clientWidth || card.offsetWidth;
 
         var pointLeft = mapPin.offsetLeft - shift.x;
-        if (pointLeft < -20) {
-          pointLeft = -20;
+        if (pointLeft < -7) {
+          pointLeft = -7;
         }
-        if (pointLeft > 1160) {
-          pointLeft = 1160;
+        if (pointLeft > 1153) {
+          pointLeft = 1153;
         }
 
         mapPin.style.top = (pointTop) + 'px';

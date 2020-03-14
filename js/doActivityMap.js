@@ -18,6 +18,7 @@
       val.removeAttribute('disabled', true);
     });
     addressId.setAttribute('value', '570, 375');
+    addressId.setAttribute('disabled', 'disabled');
     window.createButtons();
     window.createCards();
     window.listeningTriggerCards();

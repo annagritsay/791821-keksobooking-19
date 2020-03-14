@@ -7,4 +7,7 @@
   window.filtersPins();
   window.validatesFormField();
   window.sendFormData();
+
+  var addressId = document.querySelector('#address');
+  addressId.setAttribute('value', '570, 375');
 })();
