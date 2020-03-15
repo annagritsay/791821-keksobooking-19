@@ -92,7 +92,7 @@
               <img src="img/muffin-grey.svg" alt="Аватар пользователя" width="40" height="44">
             </div>
             <div class="ad-form__field">
-              <input type="file" id="avatar" name="avatar" class="ad-form-header__input visually-hidden">
+              <input type="file" accept="image/png,image/jpg,image/jpeg" id="avatar" name="avatar" class="ad-form-header__input visually-hidden">
               <label class="ad-form-header__drop-zone" for="avatar">Загрузить<br>фото...</label>
             </div>
             <p class="ad-form-header__info">Заполните все обязательные поля, назначьте цену, загрузите фотографии. Придумайте интересное описание. Оно сделает объявление более живым и привлекательным. Получившееся объявление должно давать гостям полное представление о вашем жилье.</p>
@@ -117,7 +117,7 @@
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="price">Цена за ночь, руб.</label>
-          <input id="price" name="price" type="number" placeholder="5000">
+          <input id="price" name="price" type="number" placeholder="1000">
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--time">
           <label class="ad-form__label" for="timein">Время заезда и выезда</label>
@@ -144,10 +144,10 @@
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="capacity">Количество мест</label>
           <select id="capacity" name="capacity">
-            <option value="3" selected>для 3 гостей</option>
-            <option value="2">для 2 гостей</option>
-            <option value="1">для 1 гостя</option>
-            <option value="0">не для гостей</option>
+            <option value="3" disabled>для 3 гостей</option>
+            <option value="2" disabled>для 2 гостей</option>
+            <option value="1" selected>для 1 гостя</option>
+            <option value="0" disabled>не для гостей</option>
           </select>
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide features">
@@ -173,7 +173,7 @@
           <label class="ad-form__label">Фотография жилья</label>
           <div class="ad-form__photo-container">
             <div class="ad-form__upload">
-              <input type="file" id="images" name="images" class="ad-form__input visually-hidden">
+              <input type="file" accept="image/png,image/jpg,image/jpeg" id="images" name="images" class="ad-form__input visually-hidden">
               <label for="images" class="ad-form__drop-zone">Загрузить<br>фото...</label>
             </div>
             <div class="ad-form__photo"></div>
@@ -247,6 +247,19 @@
       <button class="error__button">Попробовать снова</button>
     </div>
   </template>
-
+  <script src='js/util.js'></script>
+  <script src='js/getDataCards.js'></script>
+  <script src='js/doActivityMap.js'></script>
+  <script src='js/doInactivityMap.js'></script>
+  <script src='js/movePin.js'></script>
+  <script src='js/stateSuccessSending.js'></script>
+  <script src='js/stateErrorSending.js'></script>
+  <script src='js/sendFormData.js'></script>
+  <script src='js/filtersPins.js'></script>
+  <script src='js/validatesFormField.js'></script>
+  <script src='js/createCards.js'></script>
+  <script src='js/createPins.js'></script>
+  <script src='js/listeningTriggerCards.js'></script>
+  <script src='js/index.js'></script>
 </body>
 </html>
