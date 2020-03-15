@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 'use strict';
 
 (function () {
@@ -9,10 +8,8 @@
 
     xhv.addEventListener('load', function () {
       if (xhv.status === 200) {
-        console.log(xhv.response);
         window.successMassage();
       } else {
-        console.log('Cтатус ответа: ' + xhv.status + ' ' + xhv.statusText);
         window.errorMassage();
       }
     });
