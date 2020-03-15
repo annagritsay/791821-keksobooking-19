@@ -15,6 +15,7 @@
     var mapPinAllArray = Array.prototype.slice.call(mapPinAll);
     var mapCardAllArray = Array.prototype.slice.call(mapCardAll);
     var addressId = document.querySelector('#address');
+    var price = document.querySelector('#price');
 
     mapPinAllArray.splice(0, 1);
     mapCardAllArray.forEach(function (value) {
@@ -33,5 +34,6 @@
     });
     adForm.reset();
     mapFilters.reset();
+    price.placeholder = '1000';
   };
 })();

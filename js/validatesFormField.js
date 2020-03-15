@@ -5,31 +5,37 @@
 
   window.validatesFormField = function () {
 
-    // Синхронизация количества комнат и гостей
-    var capacity = document.querySelector('#capacity').querySelectorAll('option');
+    var title = document.querySelector('#title');
     var roomNumber = document.querySelector('#room_number');
     var capacitySelect = document.querySelector('#capacity');
+    var capacity = document.querySelector('#capacity').querySelectorAll('option');
+    var typeHouse = document.querySelector('#type');
+    var price = document.querySelector('#price');
+    var buttonSubmit = document.querySelector('.ad-form__submit');
 
-    roomNumber.addEventListener('change', function () {
-      capacity.forEach(function (val) {
-        val.removeAttribute('disabled');
-      });
-      var optionIndex = roomNumber.selectedIndex;
-      if (optionIndex === 2) {
-        capacity[3].setAttribute('disabled', true);
-      } else if (optionIndex === 3) {
-        capacity.forEach(function (val) {
-          val.setAttribute('disabled', true);
-        });
-        capacity[3].removeAttribute('disabled');
-      } else if (optionIndex === 0) {
-        capacity.forEach(function (val) {
-          val.setAttribute('disabled', true);
-        });
-        capacity[2].removeAttribute('disabled');
-      } else if (optionIndex === 1) {
-        capacity[3].setAttribute('disabled', true);
-        capacity[0].setAttribute('disabled', true);
+    title.addEventListener('input', function () {
+      title.setCustomValidity('');
+    });
+    price.addEventListener('input', function () {
+      price.setCustomValidity('');
+    });
+    capacitySelect.addEventListener('change', function () {
+      capacitySelect.setCustomValidity('');
+    });
+
+    //  Плейсхолдер цены в зависимости от типа жилья
+    typeHouse.addEventListener('change', function () {
+      if (typeHouse.value === 'house') {
+        price.placeholder = '5000';
+      }
+      if (typeHouse.value === 'bungalo') {
+        price.placeholder = '0';
+      }
+      if (typeHouse.value === 'flat') {
+        price.placeholder = '1000';
+      }
+      if (typeHouse.value === 'palace') {
+        price.placeholder = '10 000';
       }
     });
 
@@ -57,39 +63,42 @@
       timeinSelect.value = timein[optionIndex].value;
     });
 
-    // Валидация формы
-    var buttonSubmit = document.querySelector('.ad-form__submit');
-
-    buttonSubmit.addEventListener('click', function () {
-      var optionIndex = capacitySelect.selectedIndex;
-      if (capacitySelect[optionIndex].disabled === true) {
-        capacitySelect.setCustomValidity('Выберете подходящее количество мест');
-      } else {
-        capacitySelect.setCustomValidity('');
-      }
-    });
-
-    capacitySelect.addEventListener('click', function () {
+    // Синхронизация количества комнат и гостей
+    roomNumber.addEventListener('change', function () {
+      var selectedOptions = roomNumber.selectedOptions;
       capacitySelect.setCustomValidity('');
+      capacity.forEach(function (item) {
+        if (Number(selectedOptions[0].value) - Number(item.value) === 100) {
+          item.removeAttribute('disabled');
+        } else if (item.value <= selectedOptions[0].value && selectedOptions[0].value !== '100' && item.value !== '0') {
+          item.removeAttribute('disabled');
+        } else {
+          item.setAttribute('disabled', true);
+        }
+      });
     });
 
-    //  Плейсхолдер цены в зависимости от типа жилья
-    var typeHouse = document.querySelector('#type');
-    var price = document.querySelector('#price');
+    // Отправка формы
+    buttonSubmit.addEventListener('click', function () {
 
-    typeHouse.addEventListener('change', function () {
-      if (typeHouse.value === 'house') {
-        price.placeholder = '5000';
+      if (title.value.length === 0) {
+        title.setCustomValidity('Не заполнено обязательное поле');
+      } else if (title.value.length < 29) {
+        title.setCustomValidity('Минимальное количество знаков - 30');
+      } else if (title.value.length > 99) {
+        price.setCustomValidity('Максимальное количество знаков - 100');
       }
-      if (typeHouse.value === 'bungalo') {
-        price.placeholder = '0';
+
+      if (price.value.length === 0) {
+        price.setCustomValidity('Не заполнено обязательное поле');
+      } else if (Number(price.value) < Number(price.placeholder)) {
+        price.setCustomValidity('Минимальная цена для этого варианта размещения: ' + price.placeholder);
       }
-      if (typeHouse.value === 'flat') {
-        price.placeholder = '1000';
-      }
-      if (typeHouse.value === 'palace') {
-        price.placeholder = '10 000';
+
+      if (capacitySelect.selectedOptions[0].disabled) {
+        capacitySelect.setCustomValidity('Выберете подходящее количество мест');
       }
     });
+
   };
 })();

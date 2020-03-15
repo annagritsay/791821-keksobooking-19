@@ -4,7 +4,6 @@
 (function () {
   var URL = 'https://js.dump.academy/keksobooking';
   var adForm = document.querySelector('.ad-form');
-
   var upload = function (data) {
     var xhv = new XMLHttpRequest();
 
@@ -28,8 +27,7 @@
     upload(new FormData(adForm));
   });
 
-  adForm.addEventListener('reset', function (evt) {
-    evt.preventDefault();
+  adForm.addEventListener('reset', function () {
     window.doInactivityMap();
   });
 
