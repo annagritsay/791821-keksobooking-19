@@ -31,5 +31,7 @@
     fieldsetAllArray.forEach(function (val) {
       val.setAttribute('disabled', true);
     });
+    adForm.reset();
+    mapFilters.reset();
   };
 })();
