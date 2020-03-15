@@ -19,7 +19,7 @@
     });
     addressId.setAttribute('value', '570, 375');
     addressId.setAttribute('readonly', 'readonly');
-    window.createButtons(window.DATA);
+    window.createPinss(window.DATA);
     window.createCards(window.DATA);
     window.listeningTriggerCards();
   };

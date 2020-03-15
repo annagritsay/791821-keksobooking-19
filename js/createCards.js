@@ -8,12 +8,14 @@
     var templateCard = document.querySelector('#card');
     var mapCard = templateCard.content.querySelector('.popup');
     var elementCard = mapCard.cloneNode(true);
+    var popupFeature = elementCard.querySelectorAll('.popup__feature');
 
     elementCard.querySelector('.popup__avatar').src = dataCards[indexCard].author.avatar;
     elementCard.querySelector('.popup__title').textContent = dataCards[indexCard].offer.title;
     elementCard.querySelector('.popup__text--address').textContent = dataCards[indexCard].offer.address;
     elementCard.querySelector('.popup__text--price').textContent = dataCards[indexCard].offer.price + ' ₽/ночь';
     elementCard.setAttribute('style', 'display: ' + 'none' + ';');
+
     if (dataCards[indexCard].offer.type === 'palace') {
       var typeVar = 'Дворец';
     }
@@ -26,12 +28,12 @@
     if (dataCards[indexCard].offer.type === 'bungalo') {
       typeVar = 'Бунгало';
     }
+
     elementCard.querySelector('.popup__type').textContent = typeVar;
     elementCard.querySelector('.popup__text--capacity').textContent = dataCards[indexCard].offer.rooms + ' комнаты для ' + dataCards[indexCard].offer.guests + ' гостей';
     elementCard.querySelector('.popup__text--time').textContent = 'Заезд после ' + dataCards[indexCard].offer.checkin + ' выезд до ' + dataCards[indexCard].offer.checkout;
 
     //  Скрываю все классы у преимуществ
-    var popupFeature = elementCard.querySelectorAll('.popup__feature');
     for (var indexFeature = 0; indexFeature < popupFeature.length; indexFeature++) {
       popupFeature[indexFeature].setAttribute('style', 'display: ' + 'none' + ';');
     }

@@ -10,7 +10,6 @@
     xhr.send();
     xhr.addEventListener('load', function () {
       if (xhr.status === 200) {
-        console.log(xhr.response);
         window.DATA = xhr.response;
       } else {
         console.log('Cтатус ответа: ' + xhr.status + ' ' + xhr.statusText);

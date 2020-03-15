@@ -6,7 +6,7 @@
   var fragment = document.createDocumentFragment();
 
   /*  Функция создания одной метки на карте  */
-  var createButton = function (indexButton, dataCards) {
+  var createPin = function (indexButton, dataCards) {
     var element = button.cloneNode(true);
     element.setAttribute('style', 'left: ' + dataCards[indexButton].location.x + 'px; ' + 'top: ' + dataCards[indexButton].location.y + 'px;');
     element.querySelector('img').alt = dataCards[indexButton].offer.title;
@@ -17,9 +17,9 @@
   var mapPins = document.querySelector('.map__pins');
 
   /*  Функция создания всех меток на карте  */
-  window.createButtons = function (dataCards) {
+  window.createPins = function (dataCards) {
     for (var indexButton = 0; indexButton < dataCards.length && indexButton < 5; indexButton++) {
-      createButton(indexButton, dataCards);
+      createPin(indexButton, dataCards);
     }
     mapPins.appendChild(fragment);
   };

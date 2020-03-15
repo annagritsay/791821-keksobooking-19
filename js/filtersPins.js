@@ -72,7 +72,7 @@
       mapPinAllArray.forEach(function (value) {
         value.remove();
       });
-      window.createButtons(dataCards);
+      window.createPins(dataCards);
       window.createCards(dataCards);
       window.listeningTriggerCards();
     });

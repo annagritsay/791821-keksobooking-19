@@ -31,9 +31,6 @@
         if (pointTop > 618) {
           pointTop = 618;
         }
-        // Вычисляет ширину карты (для правой границы), но в таком случае метка тупит на границе, дергается, решить эту проблему можно, но подольше по времени
-        // var card = document.querySelector('.map__pins');
-        // var widthMap = card.clientWidth || card.offsetWidth;
 
         var pointLeft = mapPin.offsetLeft - shift.x;
         if (pointLeft < -7) {

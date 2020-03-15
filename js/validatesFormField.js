@@ -79,7 +79,6 @@
 
     // Отправка формы
     buttonSubmit.addEventListener('click', function () {
-
       if (title.value.length === 0) {
         title.setCustomValidity('Не заполнено обязательное поле');
       } else if (title.value.length < 29) {
@@ -98,6 +97,5 @@
         capacitySelect.setCustomValidity('Выберете подходящее количество мест');
       }
     });
-
   };
 })();
