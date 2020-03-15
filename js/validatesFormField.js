@@ -4,7 +4,6 @@
   // Валидация полей формы объявления
 
   window.validatesFormField = function () {
-
     var title = document.querySelector('#title');
     var roomNumber = document.querySelector('#room_number');
     var capacitySelect = document.querySelector('#capacity');
