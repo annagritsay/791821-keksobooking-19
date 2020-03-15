@@ -39,27 +39,27 @@
     });
 
     //  Синхронизация времени заезда-выезда
-    var timein = document.querySelector('#timein').querySelectorAll('option');
-    var timeout = document.querySelector('#timeout').querySelectorAll('option');
+    var timesIn = document.querySelector('#timein').querySelectorAll('option');
+    var timesOut = document.querySelector('#timeout').querySelectorAll('option');
     var timeinSelect = document.querySelector('#timein');
     var timeoutSelect = document.querySelector('#timeout');
 
     timeinSelect.addEventListener('change', function () {
-      timeout.forEach(function (val) {
+      timesOut.forEach(function (val) {
         val.removeAttribute('selected');
       });
       var optionIndex = timeinSelect.selectedIndex;
-      timeout[optionIndex].setAttribute('selected', true);
-      timeoutSelect.value = timeout[optionIndex].value;
+      timesOut[optionIndex].setAttribute('selected', true);
+      timeoutSelect.value = timesOut[optionIndex].value;
     });
 
     timeoutSelect.addEventListener('change', function () {
-      timein.forEach(function (val) {
+      timesIn.forEach(function (val) {
         val.removeAttribute('selected');
       });
       var optionIndex = timeoutSelect.selectedIndex;
-      timein[optionIndex].setAttribute('selected', true);
-      timeinSelect.value = timein[optionIndex].value;
+      timesIn[optionIndex].setAttribute('selected', true);
+      timeinSelect.value = timesIn[optionIndex].value;
     });
 
     // Синхронизация количества комнат и гостей
@@ -91,6 +91,8 @@
         price.setCustomValidity('Не заполнено обязательное поле');
       } else if (Number(price.value) < Number(price.placeholder)) {
         price.setCustomValidity('Минимальная цена для этого варианта размещения: ' + price.placeholder);
+      } else if (Number(price.value) > 1000000) {
+        price.setCustomValidity('Максимально допустимое значение: 1 000 000');
       }
 
       if (capacitySelect.selectedOptions[0].disabled) {

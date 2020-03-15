@@ -8,5 +8,11 @@
   window.validatesFormField();
 
   var addressId = document.querySelector('#address');
+  var adFormElements = document.querySelectorAll('.ad-form__element');
+  var adFormElementsArray = Array.prototype.slice.call(adFormElements);
+
   addressId.setAttribute('value', '570, 375');
+  adFormElementsArray.forEach(function (value) {
+    value.setAttribute('disabled', true);
+  });
 })();

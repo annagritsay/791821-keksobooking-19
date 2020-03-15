@@ -14,13 +14,13 @@
       var housingGuests = document.querySelector('#housing-guests');
       var housingFeatures = document.querySelector('#housing-features');
       var housingFeaturesInputs = housingFeatures.querySelectorAll('.map__checkbox');
-      var mapPinAll = document.querySelectorAll('.map__pin');
-      var mapCardAll = document.querySelectorAll('.map__card');
-      var mapPinAllArray = Array.prototype.slice.call(mapPinAll);
-      var mapCardAllArray = Array.prototype.slice.call(mapCardAll);
+      var mapPins = document.querySelectorAll('.map__pin');
+      var mapCards = document.querySelectorAll('.map__card');
+      var mapPinsArray = Array.prototype.slice.call(mapPins);
+      var mapCardsArray = Array.prototype.slice.call(mapCards);
       var housingFeaturesInputsArray = Array.prototype.slice.call(housingFeaturesInputs);
 
-      mapPinAllArray.splice(0, 1);
+      mapPinsArray.splice(0, 1);
 
       if (housingTypeSelect.value !== 'any') {
         dataCards = dataCards.filter(function (it) {
@@ -66,10 +66,10 @@
         }
       });
 
-      mapCardAllArray.forEach(function (value) {
+      mapCardsArray.forEach(function (value) {
         value.remove();
       });
-      mapPinAllArray.forEach(function (value) {
+      mapPinsArray.forEach(function (value) {
         value.remove();
       });
       window.createPins(dataCards);
