@@ -19,8 +19,8 @@
     });
     addressId.setAttribute('value', '570, 375');
     addressId.setAttribute('disabled', 'disabled');
-    window.createButtons();
-    window.createCards();
+    window.createButtons(window.DATA);
+    window.createCards(window.DATA);
     window.listeningTriggerCards();
   };
 })();

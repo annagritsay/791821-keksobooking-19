@@ -39,8 +39,8 @@
         if (pointLeft < -7) {
           pointLeft = -7;
         }
-        if (pointLeft > 1153) {
-          pointLeft = 1153;
+        if (pointLeft > 1158) {
+          pointLeft = 1158;
         }
 
         mapPin.style.top = (pointTop) + 'px';

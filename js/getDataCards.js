@@ -11,8 +11,7 @@
     xhr.addEventListener('load', function () {
       if (xhr.status === 200) {
         console.log(xhr.response);
-        window.arrayElement = xhr.response;
-        window.copyArrayElement = window.arrayElement;
+        window.DATA = xhr.response;
       } else {
         console.log('Cтатус ответа: ' + xhr.status + ' ' + xhr.statusText);
       }
