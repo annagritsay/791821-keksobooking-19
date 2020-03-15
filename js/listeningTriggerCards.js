@@ -32,14 +32,16 @@
         openCard(index);
       });
       currentValue.addEventListener('keydown', function (evt) {
-        if (evt.keyCode === window.util.ESC_KEYCODE) {
+        if (evt.keyCode === window.util.ENTER_KEYCODE) {
           openCard(index);
         }
       });
-      buttonClose[index].addEventListener('keydown', function (evt) {
+      document.addEventListener('keydown', function (evt) {
         if (evt.keyCode === window.util.ESC_KEYCODE) {
           popupClose();
         }
+      });
+      buttonClose[index].addEventListener('keydown', function (evt) {
         if (evt.keyCode === window.util.ENTER_KEYCODE) {
           popupClose();
         }
