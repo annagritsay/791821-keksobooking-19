@@ -81,10 +81,10 @@
     buttonSubmit.addEventListener('click', function () {
       if (title.value.length === 0) {
         title.setCustomValidity('Не заполнено обязательное поле');
-      } else if (title.value.length < 29) {
+      } else if (title.value.length < 30) {
         title.setCustomValidity('Минимальное количество знаков - 30');
-      } else if (title.value.length > 99) {
-        price.setCustomValidity('Максимальное количество знаков - 100');
+      } else if (title.value.length > 100) {
+        title.setCustomValidity('Максимальное количество знаков - 100');
       }
 
       if (price.value.length === 0) {
