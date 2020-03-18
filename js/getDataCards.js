@@ -10,6 +10,9 @@
     xhr.addEventListener('load', function () {
       if (xhr.status === 200) {
         window.DATA = xhr.response;
+        window.createPins(window.DATA);
+        window.createCards(window.DATA);
+        window.listeningTriggerCards();
       }
     });
     xhr.timeout = 10000; // 10s

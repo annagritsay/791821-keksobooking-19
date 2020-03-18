@@ -2,7 +2,6 @@
 
 // Загрузка данных и вызов слушателей различных событий на странице
 (function () {
-  window.getDataCards();
   window.movePin();
   window.filtersPins();
   window.validatesFormField();

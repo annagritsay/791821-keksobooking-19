@@ -8,6 +8,9 @@
     var addressId = document.querySelector('#address');
 
     mapPin.addEventListener('mousedown', function (evt) {
+      if (map.classList.contains('map--faded')) {
+        window.doActivityMap();
+      }
       evt.preventDefault();
 
       var startCoords = {
@@ -42,9 +45,7 @@
 
         mapPin.style.top = (pointTop) + 'px';
         mapPin.style.left = (pointLeft) + 'px';
-        if (map.classList.contains('map--faded')) {
-          window.doActivityMap();
-        }
+
         var adress1 = pointTop + 12;
         var adress2 = pointLeft + 7;
         addressId.setAttribute('value', adress1 + ',' + ' ' + adress2);
