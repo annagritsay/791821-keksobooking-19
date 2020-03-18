@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-  window.errorMassage = function () {
+  window.getErrorMassage = function () {
     var template = document.querySelector('#error');
     var conteiner = document.querySelector('main');
     var massage = template.content.querySelector('.error').cloneNode(true);

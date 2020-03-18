@@ -8,9 +8,9 @@
 
     xhv.addEventListener('load', function () {
       if (xhv.status === 200) {
-        window.successMassage();
+        window.getSuccessMassage();
       } else {
-        window.errorMassage();
+        window.getErrorMassage();
       }
     });
 
