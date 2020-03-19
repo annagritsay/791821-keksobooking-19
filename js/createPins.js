@@ -25,7 +25,7 @@
         value.remove();
       });
     }
-    for (var indexButton = 0; indexButton < dataCards.length - 1 && indexButton < 5; indexButton++) {
+    for (var indexButton = 0; indexButton < dataCards.length && indexButton < 5; indexButton++) {
       createPin(indexButton, dataCards);
     }
     mapPin.appendChild(fragment);
