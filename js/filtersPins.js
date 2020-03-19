@@ -49,7 +49,7 @@
       };
       lastTimeout = window.setTimeout(function () {
         filterTypeSelect();
-      }, 300);
+      }, 500);
     });
   };
 })();
