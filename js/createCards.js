@@ -20,25 +20,25 @@
     elementCard.querySelector('.popup__text--time').textContent = 'Заезд после ' + card.offer.checkin + ' выезд до ' + card.offer.checkout;
 
     //  Скрываю все классы у преимуществ
-    for (var indexFeature = 0; indexFeature < popupFeature.length; indexFeature++) {
-      popupFeature[indexFeature].setAttribute('style', 'display: ' + 'none' + ';');
-    }
+    popupFeature.forEach(function (item) {
+      item.setAttribute('style', 'display: ' + 'none' + ';');
+    });
 
     if (card.offer.features.length > 0) {
       //  Добавляю классы имеющихся преимуществ
-      for (var indexFeatureAvailable = 0; indexFeatureAvailable < card.offer.features.length; indexFeatureAvailable++) {
-        elementCard.querySelector('.popup__feature' + '--' + card.offer.features[indexFeatureAvailable]).setAttribute('style', 'display: ' + 'inline-block' + ';');
-      }
+      card.offer.features.forEach(function (item) {
+        elementCard.querySelector('.popup__feature' + '--' + item).setAttribute('style', 'display: ' + 'inline-block' + ';');
+      });
       elementCard.querySelector('.popup__description').textContent = card.offer.description;
     }
 
     if (card.offer.photos.length > 0) {
       elementCard.querySelector('.popup__photo').src = card.offer.photos[0];
-      for (var i = 1; i < card.offer.photos.length; i++) {
+      card.offer.photos.forEach(function (item) {
         var popupPhoto = elementCard.querySelector('.popup__photo').cloneNode(true);
-        popupPhoto.src = card.offer.photos[i];
+        popupPhoto.src = item;
         elementCard.querySelector('.popup__photos').appendChild(popupPhoto);
-      }
+      });
     } else {
       elementCard.querySelector('.popup__photo').setAttribute('style', 'display: ' + 'none' + ';');
     }
@@ -57,9 +57,9 @@
     var containerCard = document.querySelector('.map');
     var filtersContainer = document.querySelector('.map__filters-container');
 
-    for (var indexCard = 0; indexCard < dataCards.length - 1 && indexCard < 5; indexCard++) {
-      createCard(dataCards[indexCard]);
-    }
+    dataCards.map(function (item) {
+      createCard(item);
+    });
     containerCard.insertBefore(fragmentCard, filtersContainer);
   };
 
