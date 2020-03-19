@@ -46,7 +46,7 @@
 
         var adress1 = pointTop + 12;
         var adress2 = pointLeft + 7;
-        address.setAttribute('value', adress1 + ',' + ' ' + adress2);
+        window.HashVars.address.setAttribute('value', adress1 + ',' + ' ' + adress2);
       };
 
       var onMouseUp = function (upEvt) {
