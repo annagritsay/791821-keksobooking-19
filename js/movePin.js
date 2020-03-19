@@ -5,8 +5,6 @@
   window.movePin = function () {
     var mapPin = document.querySelector('.map__pin--main');
     var map = document.querySelector('.map');
-    var addressId = document.querySelector('#address');
-
     mapPin.addEventListener('mousedown', function (evt) {
       if (map.classList.contains('map--faded')) {
         window.doActivityMap();
@@ -48,7 +46,7 @@
 
         var adress1 = pointTop + 12;
         var adress2 = pointLeft + 7;
-        addressId.setAttribute('value', adress1 + ',' + ' ' + adress2);
+        address.setAttribute('value', adress1 + ',' + ' ' + adress2);
       };
 
       var onMouseUp = function (upEvt) {

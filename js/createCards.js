@@ -2,11 +2,10 @@
 
 (function () {
   var fragmentCard = document.createDocumentFragment();
+  var templateCard = document.querySelector('#card');
+  var mapCard = templateCard.content.querySelector('.popup');
 
-  /*  Функция создания одной карточки  */
   var createCard = function (card) {
-    var templateCard = document.querySelector('#card');
-    var mapCard = templateCard.content.querySelector('.popup');
     var elementCard = mapCard.cloneNode(true);
     var popupFeature = elementCard.querySelectorAll('.popup__feature');
 

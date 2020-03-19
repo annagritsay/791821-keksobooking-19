@@ -2,14 +2,11 @@
 'use strict';
 (function () {
   window.listeningTriggerCards = function () {
-    var mapPins = document.querySelectorAll('.map__pin');
+    var buttonClose = document.querySelectorAll('.popup__close');
+    var mapPins = document.querySelectorAll('.map__pin + :not(.map-pin--main)');
     var mapCards = document.querySelectorAll('.map__card');
     var mapPinsArray = Array.prototype.slice.call(mapPins);
     var mapCardsArray = Array.prototype.slice.call(mapCards);
-    var buttonClose = document.querySelectorAll('.popup__close');
-
-    // ИСКЛЮЧАЕТ ИЗ МАССИВА ГЛАВНУЮ МЕТКУ
-    mapPinsArray.splice(0, 1);
 
     // Функция открытия карточки
     var openCard = function (index) {

@@ -2,16 +2,14 @@
 
 (function () {
   window.providesPossibleFieldOptions = function () {
-    var adForm = document.querySelector('.ad-form');
     var roomNumber = document.querySelector('#room_number');
     var capacity = document.querySelector('#capacity').querySelectorAll('option');
     var typeHouse = document.querySelector('#type');
-    var price = document.querySelector('#price');
     var timeinSelect = document.querySelector('#timein');
     var timeoutSelect = document.querySelector('#timeout');
 
-    adForm.addEventListener('change', function () {
-      price.placeholder = window.HashHouse[typeHouse.value].placeholder;
+    window.HashVars.adForm.addEventListener('change', function () {
+      window.HashVars.price.placeholder = window.HashHouse[typeHouse.value].placeholder;
       timeoutSelect.value = timeinSelect.value;
       capacity.forEach(function (item) {
         if (Number(roomNumber.value) - Number(item.value) === 100) {

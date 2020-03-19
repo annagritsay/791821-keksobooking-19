@@ -2,7 +2,6 @@
 'use strict';
 
 (function () {
-  var mapFilters = document.querySelector('.map__filters');
   var housingTypeSelect = document.querySelector('#housing-type');
   var housingPrice = document.querySelector('#housing-price');
   var housingRooms = document.querySelector('#housing-rooms');
@@ -11,7 +10,7 @@
 
   window.filtersPins = function () {
     var lastTimeout = null;
-    mapFilters.addEventListener('change', function () {
+    window.HashVars.mapFilters.addEventListener('change', function () {
       var counter = 0;
       if (lastTimeout) {
         window.clearTimeout(lastTimeout);
