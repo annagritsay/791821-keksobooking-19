@@ -29,8 +29,8 @@
 
   window.filtersPins = function () {
     var lastTimeout = null;
-
     mapFilters.addEventListener('change', function () {
+      var counter = 0;
       if (lastTimeout) {
         window.clearTimeout(lastTimeout);
       }
@@ -47,6 +47,9 @@
             }
             return false;
           });
+          if (counter > 4) {
+            return false;
+          }
           if (
             (it.offer.type === housingTypeSelect.value || housingTypeSelect.value === 'any')
               && (it.offer.rooms === Number(housingRooms.value) || housingRooms.value === 'any')
@@ -54,6 +57,7 @@
               && (HashPrice[housingPrice.value].min <= it.offer.price && it.offer.price <= HashPrice[housingPrice.value].max)
               && (arrayOfSimilarFeatures.length === housingFeaturesInputs.length || housingFeaturesInputs.length === 0)
           ) {
+            counter = counter + 1;
             return true;
           }
           return false;
