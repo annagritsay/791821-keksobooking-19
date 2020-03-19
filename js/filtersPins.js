@@ -1,4 +1,3 @@
-/* eslint-disable max-nested-callbacks */
 'use strict';
 
 (function () {
@@ -20,13 +19,16 @@
       housingFeatures.querySelectorAll('.map__checkbox:checked').forEach(function (it) {
         housingFeaturesInputs.push(it.value);
       });
+      var filterFeatures = function (it, item) {
+        if (it.offer.features.indexOf(item) !== -1) {
+          return true;
+        }
+        return false;
+      };
       var filterTypeSelect = function () {
         dataCards = dataCards.filter(function (it) {
           var arrayOfSimilarFeatures = housingFeaturesInputs.filter(function (item) {
-            if (it.offer.features.indexOf(item) !== -1) {
-              return true;
-            }
-            return false;
+            return filterFeatures(it, item);
           });
           if (counter > 5) {
             return false;
