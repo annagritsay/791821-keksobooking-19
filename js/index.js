@@ -4,6 +4,7 @@
 (function () {
   window.movePin();
   window.filtersPins();
+  window.providesPossibleFieldOptions();
   window.validatesFormField();
 
   var addressId = document.querySelector('#address');

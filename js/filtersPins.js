@@ -8,24 +8,6 @@
   var housingRooms = document.querySelector('#housing-rooms');
   var housingGuests = document.querySelector('#housing-guests');
   var housingFeatures = document.querySelector('#housing-features');
-  var HashPrice = {
-    middle: {
-      min: 10000,
-      max: 50000
-    },
-    low: {
-      min: 0,
-      max: 10000
-    },
-    high: {
-      min: 50000,
-      max: Infinity
-    },
-    any: {
-      min: 0,
-      max: Infinity
-    }
-  };
 
   window.filtersPins = function () {
     var lastTimeout = null;
@@ -47,14 +29,14 @@
             }
             return false;
           });
-          if (counter > 4) {
+          if (counter > 5) {
             return false;
           }
           if (
             (it.offer.type === housingTypeSelect.value || housingTypeSelect.value === 'any')
               && (it.offer.rooms === Number(housingRooms.value) || housingRooms.value === 'any')
               && (it.offer.guests === Number(housingGuests.value) || housingGuests.value === 'any')
-              && (HashPrice[housingPrice.value].min <= it.offer.price && it.offer.price <= HashPrice[housingPrice.value].max)
+              && (window.HashPrice[housingPrice.value].min <= it.offer.price && it.offer.price <= window.HashPrice[housingPrice.value].max)
               && (arrayOfSimilarFeatures.length === housingFeaturesInputs.length || housingFeaturesInputs.length === 0)
           ) {
             counter = counter + 1;

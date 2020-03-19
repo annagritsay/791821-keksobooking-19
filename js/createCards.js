@@ -4,53 +4,39 @@
   var fragmentCard = document.createDocumentFragment();
 
   /*  Функция создания одной карточки  */
-  var createCard = function (indexCard, dataCards) {
+  var createCard = function (card) {
     var templateCard = document.querySelector('#card');
     var mapCard = templateCard.content.querySelector('.popup');
     var elementCard = mapCard.cloneNode(true);
     var popupFeature = elementCard.querySelectorAll('.popup__feature');
 
-    elementCard.querySelector('.popup__avatar').src = dataCards[indexCard].author.avatar;
-    elementCard.querySelector('.popup__title').textContent = dataCards[indexCard].offer.title;
-    elementCard.querySelector('.popup__text--address').textContent = dataCards[indexCard].offer.address;
-    elementCard.querySelector('.popup__text--price').textContent = dataCards[indexCard].offer.price + ' ₽/ночь';
+    elementCard.querySelector('.popup__avatar').src = card.author.avatar;
+    elementCard.querySelector('.popup__title').textContent = card.offer.title;
+    elementCard.querySelector('.popup__text--address').textContent = card.offer.address;
+    elementCard.querySelector('.popup__text--price').textContent = card.offer.price + ' ₽/ночь';
     elementCard.setAttribute('style', 'display: ' + 'none' + ';');
-
-    if (dataCards[indexCard].offer.type === 'palace') {
-      var typeVar = 'Дворец';
-    }
-    if (dataCards[indexCard].offer.type === 'flat') {
-      typeVar = 'Квартира';
-    }
-    if (dataCards[indexCard].offer.type === 'house') {
-      typeVar = 'Дом';
-    }
-    if (dataCards[indexCard].offer.type === 'bungalo') {
-      typeVar = 'Бунгало';
-    }
-
-    elementCard.querySelector('.popup__type').textContent = typeVar;
-    elementCard.querySelector('.popup__text--capacity').textContent = dataCards[indexCard].offer.rooms + ' комнаты для ' + dataCards[indexCard].offer.guests + ' гостей';
-    elementCard.querySelector('.popup__text--time').textContent = 'Заезд после ' + dataCards[indexCard].offer.checkin + ' выезд до ' + dataCards[indexCard].offer.checkout;
+    elementCard.querySelector('.popup__type').textContent = window.HashHouse[card.offer.type].name || '';
+    elementCard.querySelector('.popup__text--capacity').textContent = card.offer.rooms + ' комнаты для ' + card.offer.guests + ' гостей';
+    elementCard.querySelector('.popup__text--time').textContent = 'Заезд после ' + card.offer.checkin + ' выезд до ' + card.offer.checkout;
 
     //  Скрываю все классы у преимуществ
     for (var indexFeature = 0; indexFeature < popupFeature.length; indexFeature++) {
       popupFeature[indexFeature].setAttribute('style', 'display: ' + 'none' + ';');
     }
 
-    if (dataCards[indexCard].offer.features.length > 0) {
+    if (card.offer.features.length > 0) {
       //  Добавляю классы имеющихся преимуществ
-      for (var indexFeatureAvailable = 0; indexFeatureAvailable < dataCards[indexCard].offer.features.length; indexFeatureAvailable++) {
-        elementCard.querySelector('.popup__feature' + '--' + dataCards[indexCard].offer.features[indexFeatureAvailable]).setAttribute('style', 'display: ' + 'inline-block' + ';');
+      for (var indexFeatureAvailable = 0; indexFeatureAvailable < card.offer.features.length; indexFeatureAvailable++) {
+        elementCard.querySelector('.popup__feature' + '--' + card.offer.features[indexFeatureAvailable]).setAttribute('style', 'display: ' + 'inline-block' + ';');
       }
-      elementCard.querySelector('.popup__description').textContent = dataCards[indexCard].offer.description;
+      elementCard.querySelector('.popup__description').textContent = card.offer.description;
     }
 
-    if (dataCards[indexCard].offer.photos.length > 0) {
-      elementCard.querySelector('.popup__photo').src = dataCards[indexCard].offer.photos[0];
-      for (var i = 1; i < dataCards[indexCard].offer.photos.length; i++) {
+    if (card.offer.photos.length > 0) {
+      elementCard.querySelector('.popup__photo').src = card.offer.photos[0];
+      for (var i = 1; i < card.offer.photos.length; i++) {
         var popupPhoto = elementCard.querySelector('.popup__photo').cloneNode(true);
-        popupPhoto.src = dataCards[indexCard].offer.photos[i];
+        popupPhoto.src = card.offer.photos[i];
         elementCard.querySelector('.popup__photos').appendChild(popupPhoto);
       }
     } else {
@@ -72,7 +58,7 @@
     var filtersContainer = document.querySelector('.map__filters-container');
 
     for (var indexCard = 0; indexCard < dataCards.length - 1 && indexCard < 5; indexCard++) {
-      createCard(indexCard, dataCards);
+      createCard(dataCards[indexCard]);
     }
     containerCard.insertBefore(fragmentCard, filtersContainer);
   };
