@@ -10,9 +10,13 @@
     var capacitySelect = document.querySelector('#capacity');
     var price = document.querySelector('#price');
     var buttonSubmit = document.querySelector('.ad-form__submit');
-
-    adForm.addEventListener('click', function (evt) {
+    var events = ['input', 'change'];
+    var resetErrorValid = function (evt) {
       evt.target.setCustomValidity('');
+    };
+
+    events.map(function (evt) {
+      adForm.addEventListener(evt, resetErrorValid);
     });
 
     buttonSubmit.addEventListener('click', function () {
