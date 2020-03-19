@@ -61,10 +61,17 @@
 
   /*  Функция создания всех карточек  */
   window.createCards = function (dataCards) {
+    var mapCards = document.querySelectorAll('.map__card');
+    var mapCardsArray = Array.prototype.slice.call(mapCards);
+    if (mapCardsArray.length > 0) {
+      mapCardsArray.forEach(function (value) {
+        value.remove();
+      });
+    }
     var containerCard = document.querySelector('.map');
     var filtersContainer = document.querySelector('.map__filters-container');
 
-    for (var indexCard = 0; indexCard < dataCards.length && indexCard < 5; indexCard++) {
+    for (var indexCard = 0; indexCard < dataCards.length - 1 && indexCard < 5; indexCard++) {
       createCard(indexCard, dataCards);
     }
     containerCard.insertBefore(fragmentCard, filtersContainer);

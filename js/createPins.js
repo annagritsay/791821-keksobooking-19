@@ -14,13 +14,20 @@
     fragment.appendChild(element);
   };
 
-  var mapPins = document.querySelector('.map__pins');
 
   /*  Функция создания всех меток на карте  */
   window.createPins = function (dataCards) {
-    for (var indexButton = 0; indexButton < dataCards.length && indexButton < 5; indexButton++) {
+    var mapPin = document.querySelector('.map__pins');
+    var mapPins = document.querySelectorAll('.map__pin + :not(.map-pin--main)');
+    var mapPinsArray = Array.prototype.slice.call(mapPins);
+    if (mapPinsArray.length > 0) {
+      mapPinsArray.forEach(function (value) {
+        value.remove();
+      });
+    }
+    for (var indexButton = 0; indexButton < dataCards.length - 1 && indexButton < 5; indexButton++) {
       createPin(indexButton, dataCards);
     }
-    mapPins.appendChild(fragment);
+    mapPin.appendChild(fragment);
   };
 })();
