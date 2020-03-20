@@ -10,7 +10,6 @@
   window.filtersPins = function () {
     var lastTimeout = null;
     window.HashVars.mapFilters.addEventListener('change', function () {
-      var counter = 0;
       if (lastTimeout) {
         window.clearTimeout(lastTimeout);
       }
@@ -26,31 +25,28 @@
         return false;
       };
       var filterTypeSelect = function () {
-        dataCards = dataCards.filter(function (it) {
+        var newArray = [];
+        for (var i = 0; newArray.length < 5 && dataCards.length - 1 > i; i++) {
           var arrayOfSimilarFeatures = housingFeaturesInputs.filter(function (item) {
-            return filterFeatures(it, item);
+            return filterFeatures(dataCards[i], item);
           });
-          if (counter > 5) {
-            return false;
-          }
           if (
-            (it.offer.type === housingTypeSelect.value || housingTypeSelect.value === 'any')
-              && (it.offer.rooms === Number(housingRooms.value) || housingRooms.value === 'any')
-              && (it.offer.guests === Number(housingGuests.value) || housingGuests.value === 'any')
-              && (window.HashPrice[housingPrice.value].min <= it.offer.price && it.offer.price <= window.HashPrice[housingPrice.value].max)
+            (dataCards[i].offer.type === housingTypeSelect.value || housingTypeSelect.value === 'any')
+              && (dataCards[i].offer.rooms === Number(housingRooms.value) || housingRooms.value === 'any')
+              && (dataCards[i].offer.guests === Number(housingGuests.value) || housingGuests.value === 'any')
+              && (window.HashPrice[housingPrice.value].min <= dataCards[i].offer.price && dataCards[i].offer.price <= window.HashPrice[housingPrice.value].max)
               && (arrayOfSimilarFeatures.length === housingFeaturesInputs.length || housingFeaturesInputs.length === 0)
           ) {
-            counter = counter + 1;
-            return true;
+            newArray.push(dataCards[i]);
           }
-          return false;
-        });
-        window.createPins(dataCards);
-        window.createCards(dataCards);
-        window.listeningTriggerCards();
+        }
+        return newArray;
       };
       lastTimeout = window.setTimeout(function () {
         filterTypeSelect();
+        window.createPins(filterTypeSelect());
+        window.createCards(filterTypeSelect());
+        window.listeningTriggerCards();
       }, 500);
     });
   };
