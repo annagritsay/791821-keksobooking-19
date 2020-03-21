@@ -10,7 +10,7 @@
     xhr.addEventListener('load', function () {
       if (xhr.status === 200) {
         window.DATA = xhr.response;
-        window.mainFunction(window.DATA);
+        window.callMainEvents(window.DATA);
       }
     });
     xhr.timeout = 10000; // 10s

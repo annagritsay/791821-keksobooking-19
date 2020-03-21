@@ -27,6 +27,7 @@
   window.movePin(map, mapPinMain, address);
 
   window.doInactivityMap = function () {
+    // Переменные ниже переопределяются после отрисовки карточек, поэтому их часто приходится искать на странице вновь
     mapPins = document.querySelectorAll('.map__pin:not(.map__pin--main)');
     mapPinsArray = Array.prototype.slice.call(mapPins);
     mapCards = document.querySelectorAll('.map__card');
@@ -63,19 +64,26 @@
     window.getDataCards();
   };
 
-  window.mainFunction = function (data) {
+  // Вызывается при каждой фильрации для вывода результата(вынесено в отдельную функцию, чтобы не вызывать каждый раз лишние)
+  // вроде валидации, проверки полей и тд(ниже в коде)
+
+  window.createCardsAndPins = function (data) {
     window.createPins(data, mapPinsArray, mapPin);
     window.createCards(data, map, mapCardsArray);
-
+    // Ниже переменные переопределяются после отрисовки данных, по сравнению с объявленными выше.
     mapPins = document.querySelectorAll('.map__pin:not(.map__pin--main)');
     mapPinsArray = Array.prototype.slice.call(mapPins);
     mapCards = document.querySelectorAll('.map__card');
     mapCardsArray = Array.prototype.slice.call(mapCards);
 
     window.listeningTriggerCards(mapCardsArray, mapPinsArray);
-    window.listeningTriggerCards();
-    window.filtersPins(mapFilters);
+  };
+
+  // Вызывается после загрузки объявлений
+  window.callMainEvents = function (data) {
+    window.createFilteredPins(mapFilters);
     window.providesPossibleFieldOptions(adForm, price);
     window.validatesFormField(adForm, price, capacitySelect);
+    window.createCardsAndPins(data);
   };
 })();
