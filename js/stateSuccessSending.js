@@ -1,8 +1,7 @@
 'use strict';
 
 (function () {
-  window.getSuccessMassage = function () {
-    var conteiner = document.querySelector('main');
+  window.getSuccessMassage = function (conteiner) {
     var template = document.querySelector('#success');
     var massage = template.content.querySelector('.success').cloneNode(true);
 

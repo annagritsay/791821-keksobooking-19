@@ -37,6 +37,7 @@
 
     if (card.offer.photos.length > 0) {
       elementCard.querySelector('.popup__photo').src = card.offer.photos[0];
+      // Оставила здесь for, мне нужно идти с 1 индекса
       for (var i = 1; i < card.offer.photos.length; i++) {
         popupPhotoCloneNode = elementCard.querySelector('.popup__photo').cloneNode(true);
         popupPhotoCloneNode.src = card.offer.photos[i];

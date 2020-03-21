@@ -3,14 +3,15 @@
 (function () {
   var URL = 'https://js.dump.academy/keksobooking';
   var adForm = document.querySelector('.ad-form');
+  var conteiner = document.querySelector('main');
   var upload = function (data) {
     var xhv = new XMLHttpRequest();
 
     xhv.addEventListener('load', function () {
       if (xhv.status === 200) {
-        window.getSuccessMassage();
+        window.getSuccessMassage(conteiner);
       } else {
-        window.getErrorMassage();
+        window.getErrorMassage(conteiner);
       }
     });
     xhv.open('POST', URL);

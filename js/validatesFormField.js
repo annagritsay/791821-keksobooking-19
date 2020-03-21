@@ -5,7 +5,6 @@
   var buttonSubmit = document.querySelector('.ad-form__submit');
   var events = ['input', 'change'];
 
-
   window.validatesFormField = function (adForm, price, capacitySelect) {
     var resetErrorValid = function (evt) {
       evt.target.setCustomValidity('');

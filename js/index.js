@@ -26,6 +26,8 @@
   window.validatesFormField(adForm, price, capacitySelect);
   window.movePin(map, mapPinMain, address);
 
+  // Функции активации и деактивации карты перенесла в этот файл, так как именно в нем определены общие найденные на странице элементы
+  // из функции, например, sendFormData даже параметрами, я не передам их, будет повторный поиск элементов
   window.doInactivityMap = function () {
     // Переменные ниже переопределяются после отрисовки карточек, поэтому их часто приходится искать на странице вновь
     mapPins = document.querySelectorAll('.map__pin:not(.map__pin--main)');
