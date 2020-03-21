@@ -13,7 +13,6 @@
         window.getErrorMassage();
       }
     });
-
     xhv.open('POST', URL);
     xhv.send(data);
     window.doInactivityMap();

@@ -14,12 +14,8 @@
     fragment.appendChild(element);
   };
 
-
   /*  Функция создания всех меток на карте  */
-  window.createPins = function (dataCards) {
-    var mapPin = document.querySelector('.map__pins');
-    var mapPins = document.querySelectorAll('.map__pin + :not(.map-pin--main)');
-    var mapPinsArray = Array.prototype.slice.call(mapPins);
+  window.createPins = function (dataCards, mapPinsArray, mapPin) {
     if (mapPinsArray.length > 0) {
       mapPinsArray.forEach(function (value) {
         value.remove();

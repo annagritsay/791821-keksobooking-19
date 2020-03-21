@@ -1,15 +1,15 @@
 'use strict';
 
 (function () {
-  window.providesPossibleFieldOptions = function () {
+  window.providesPossibleFieldOptions = function (adForm, price) {
     var roomNumber = document.querySelector('#room_number');
     var capacity = document.querySelector('#capacity').querySelectorAll('option');
     var typeHouse = document.querySelector('#type');
     var timeinSelect = document.querySelector('#timein');
     var timeoutSelect = document.querySelector('#timeout');
 
-    window.HashVars.adForm.addEventListener('change', function () {
-      window.HashVars.price.placeholder = window.HashHouse[typeHouse.value].placeholder;
+    adForm.addEventListener('change', function () {
+      price.placeholder = window.HashHouse[typeHouse.value].placeholder;
       timeoutSelect.value = timeinSelect.value;
       capacity.forEach(function (item) {
         if (Number(roomNumber.value) - Number(item.value) === 100) {

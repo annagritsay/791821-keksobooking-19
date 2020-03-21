@@ -7,9 +7,9 @@
   var housingGuests = document.querySelector('#housing-guests');
   var housingFeatures = document.querySelector('#housing-features');
 
-  window.filtersPins = function () {
+  window.filtersPins = function (mapFilters) {
     var lastTimeout = null;
-    window.HashVars.mapFilters.addEventListener('change', function () {
+    mapFilters.addEventListener('change', function () {
       if (lastTimeout) {
         window.clearTimeout(lastTimeout);
       }
@@ -44,9 +44,7 @@
       };
       lastTimeout = window.setTimeout(function () {
         filterTypeSelect();
-        window.createPins(filterTypeSelect());
-        window.createCards(filterTypeSelect());
-        window.listeningTriggerCards();
+        window.mainFunction(filterTypeSelect());
       }, 500);
     });
   };
