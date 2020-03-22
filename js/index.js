@@ -17,12 +17,11 @@
   var mapCards = document.querySelectorAll('.map__card');
   var mapCardsArray = Array.prototype.slice.call(mapCards);
 
-  address.setAttribute('value', '570, 375');
+  address.setAttribute('value', window.util.MAIN_PIN_START_VALUE);
   adFormElementsArray.forEach(function (value) {
     value.setAttribute('disabled', true);
   });
 
-  window.providesPossibleFieldOptions(adForm, price);
   window.validatesFormField(adForm, price, capacitySelect);
   window.movePin(map, mapPinMain, address);
 
@@ -43,15 +42,15 @@
     });
     adForm.classList.add('ad-form--disabled');
     map.classList.add('map--faded');
-    mapPinMain.setAttribute('style', 'left: ' + 570 + 'px; ' + 'top: ' + 375 + 'px;');
-    address.setAttribute('value', '570, 375');
+    mapPinMain.setAttribute('style', 'left: ' + window.util.MAIN_PIN_START_X + 'px; ' + 'top: ' + window.util.MAIN_PIN_START_Y + 'px;');
+    address.setAttribute('value', window.util.MAIN_PIN_START_VALUE);
     mapFilters.classList.add('ad-form--disabled');
     fieldsetsArray.forEach(function (val) {
       val.setAttribute('disabled', true);
     });
     adForm.reset();
     mapFilters.reset();
-    price.placeholder = '1000';
+    price.placeholder = window.HashHouse.flat.placeholder;
   };
 
   window.doActivityMap = function () {
@@ -61,7 +60,7 @@
     fieldsetsArray.forEach(function (val) {
       val.removeAttribute('disabled', true);
     });
-    address.setAttribute('value', '570, 375');
+    address.setAttribute('value', window.util.MAIN_PIN_START_VALUE);
     address.setAttribute('readonly', 'readonly');
     window.getDataCards();
   };

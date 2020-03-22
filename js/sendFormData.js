@@ -8,7 +8,7 @@
     var xhv = new XMLHttpRequest();
 
     xhv.addEventListener('load', function () {
-      if (xhv.status === 200) {
+      if (xhv.status === window.util.CODE_SUCCESS) {
         window.getSuccessMassage(conteiner);
       } else {
         window.getErrorMassage(conteiner);

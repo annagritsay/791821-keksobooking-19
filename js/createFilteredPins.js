@@ -8,9 +8,8 @@
         window.clearTimeout(lastTimeout);
       }
       lastTimeout = window.setTimeout(function () {
-        window.filterPins();
         window.createCardsAndPins(window.filterPins());
-      }, 500);
+      }, window.util.DEBOUNCE_INTERVAL);
     });
   };
 })();

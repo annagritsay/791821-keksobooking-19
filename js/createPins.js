@@ -8,9 +8,10 @@
   /*  Функция создания одной метки на карте  */
   var createPin = function (indexButton, dataCards) {
     var element = button.cloneNode(true);
+    var imgElement = element.querySelector('img');
     element.setAttribute('style', 'left: ' + dataCards[indexButton].location.x + 'px; ' + 'top: ' + dataCards[indexButton].location.y + 'px;');
-    element.querySelector('img').alt = dataCards[indexButton].offer.title;
-    element.querySelector('img').src = dataCards[indexButton].author.avatar;
+    imgElement.alt = dataCards[indexButton].offer.title;
+    imgElement.src = dataCards[indexButton].author.avatar;
     fragment.appendChild(element);
   };
 
@@ -21,7 +22,7 @@
         value.remove();
       });
     }
-    for (var indexButton = 0; indexButton < dataCards.length && indexButton < 5; indexButton++) {
+    for (var indexButton = 0; indexButton < dataCards.length && indexButton < window.util.MAX_OFFERS; indexButton++) {
       createPin(indexButton, dataCards);
     }
     mapPin.appendChild(fragment);

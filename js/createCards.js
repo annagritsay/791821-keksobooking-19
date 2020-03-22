@@ -56,9 +56,9 @@
         value.remove();
       });
     }
-    dataCards.map(function (item) {
-      createCard(item);
-    });
+    for (var index = 0; index < dataCards.length && index < window.util.MAX_OFFERS; index++) {
+      createCard(dataCards[index]);
+    }
     map.insertBefore(fragmentCard, filtersContainer);
   };
 

@@ -24,27 +24,27 @@
           y: moveEvt.clientY
         };
         var pointTop = mapPin.offsetTop - shift.y;
-        if (pointTop < 118) {
-          pointTop = 118;
+        if (pointTop < window.util.POINT_TOP_MIN) {
+          pointTop = window.util.POINT_TOP_MIN;
         }
-        if (pointTop > 618) {
-          pointTop = 618;
+        if (pointTop > window.util.POINT_TOP_MAX) {
+          pointTop = window.util.POINT_TOP_MAX;
         }
 
         var pointLeft = mapPin.offsetLeft - shift.x;
-        if (pointLeft < -7) {
-          pointLeft = -7;
+        if (pointLeft < window.util.POINT_LEFT_MIN) {
+          pointLeft = window.util.POINT_LEFT_MIN;
         }
-        if (pointLeft > 1158) {
-          pointLeft = 1158;
+        if (pointLeft > window.util.POINT_LEFT_MAX) {
+          pointLeft = window.util.POINT_LEFT_MAX;
         }
 
         mapPin.style.top = (pointTop) + 'px';
         mapPin.style.left = (pointLeft) + 'px';
 
-        var adress1 = pointTop + 12;
-        var adress2 = pointLeft + 7;
-        address.setAttribute('value', adress1 + ',' + ' ' + adress2);
+        var adress1 = pointTop + window.util.DIFFERENCE_COORDS_Y;
+        var adress2 = pointLeft + window.util.DIFFERENCE_COORDS_X;
+        address.setAttribute('value', adress2 + ',' + ' ' + adress1);
       };
 
       var onMouseUp = function (upEvt) {

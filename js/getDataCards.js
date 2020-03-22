@@ -8,12 +8,12 @@
     xhr.open('GET', URL);
     xhr.send();
     xhr.addEventListener('load', function () {
-      if (xhr.status === 200) {
+      if (xhr.status === window.util.CODE_SUCCESS) {
         window.DATA = xhr.response;
         window.callMainEvents(window.DATA);
       }
     });
-    xhr.timeout = 10000; // 10s
+    xhr.timeout = window.util.LOADING_TIMEOUT;
   };
 
 })();
